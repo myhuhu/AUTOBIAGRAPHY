@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOBIOGRAPHY</title>
+    <link rel="stylesheet" href="style.css">
+    <div id="greeting">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Header Fade-In Animation on Page Load
+        const header = document.querySelector('header');
+        if (header) {
+          header.style.opacity = 0;
+          setTimeout(() => {
+            header.style.transition = 'opacity 1.5s ease-in';
+            header.style.opacity = 1;
+          }, 100);
+        }
+      
+        // Form Validation Example
+        const form = document.querySelector('form');
+        if (form) {
+          form.addEventListener('submit', function(event) {
+            const emailField = document.getElementById('email');
+            const messageField = document.getElementById('message');
+            let valid = true;
+            
+            // Check if the email contains an '@' symbol
+            if (!emailField.value.includes('@')) {
+              valid = false;
+              alert('Please enter a valid email.');
+            }
+            
+            // Ensure the message field is not empty
+            if (messageField.value.trim() === '') {
+              valid = false;
+              alert('Message field cannot be empty.');
+            }
+            
+            // Prevent form submission if validation fails
+            if (!valid) {
+              event.preventDefault();
+            }
+          });
+        }
+      
+        // User Engagement: Greeting Message Based on Time of Day
+        const greetElement = document.getElementById('greeting');
+        if (greetElement) {
+          const currentHour = new Date().getHours();
+          let greetingMessage = '';
+          if (currentHour < 12) {
+            greetingMessage = 'Good Morning!';
+          } else if (currentHour < 18) {
+            greetingMessage = 'Good Afternoon!';
+          } else {
+            greetingMessage = 'Good Evening!';
+          }
+          greetElement.textContent = greetingMessage;
+        }
+      
+        // Scroll Animation: Fade in elements as they come into view
+        // Elements that should animate on scroll should have the class "fade-in"
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+          threshold: 0,
+          rootMargin: "0px 0px -100px 0px"
+        };
+      
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              return;
+            } else {
+              entry.target.classList.add('appear');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, appearOptions);
+      
+        faders.forEach(fader => {
+          appearOnScroll.observe(fader);
+        });
+      });
+    </script>
+    </div>
+</head>
+<body>
+    <header>
+        <h1>AUTOBIOGRAPHY</h1>
+        <nav>
+            <ul class="nav">
+                <li><a href="me.html">Home</a></li>
+                <li><a href="Childhood.html">Childhood</a></li>
+                <li><a href="Education.html">Education</a></li>
+                <li><a href="Skills.html">Skills</a></li>
+                <li><a href="Future.html">Future</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>About me</h1>
+        <p>My name is Ben Opiyo. I was born in the year 2005 in Homa Bay County, Ndhiwa Constituency, and raised in a small village called Kanyamwah. My area of interest is studying computer science technology to achieve my dream of becoming a computer expert in solving various problems related to computers.</p>
+        <a href="Childhood.html" class="btn">Visit my Childhood page</a>
+    </main>
+    <footer>
+        <!-- Login Button -->
+<button id="loginButton">Login</button>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+        
+        <label for="password">Enter your password:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div><!-- Login Modal -->
+
+    </form>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginButton = document.getElementById('loginButton');
+        const modal = document.getElementById('loginModal');
+        const closeBtn = document.querySelector('.close');
+      
+        // Show the modal when the login button is clicked
+        loginButton.addEventListener('click', function() {
+          modal.style.display = 'block';
+        });
+      
+        // Hide the modal when the close button is clicked
+        closeBtn.addEventListener('click', function() {
+          modal.style.display = 'none';
+        });
+      
+        // Hide the modal if the user clicks outside of the modal content
+        window.addEventListener('click', function(event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        });
+      
+        // Optional: Prevent form submission and add custom behavior
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          // Implement your login logic here
+          alert('Login form submitted!');
+          modal.style.display = 'none'; // Optionally close the modal after submission
+        });
+      });
+      </script>
+</div>
+        <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
